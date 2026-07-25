@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lashesta Turner — Photographer · Trader · Creator</title>
+  <meta name="description" content="Lashesta Turner's personal brand — photography, branding & web design, day trading with 1House.TV, gardening, and content creation. Book a discovery call from any creative service." />
+
+  <!-- Fonts: Pinyon Script (cursive) · Cormorant Garamond (serif) · Jost (sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <meta property="og:title" content="Lashesta Turner — Photographer · Trader · Creator" />
+  <meta property="og:description" content="Photography, branding & web design, day trading with 1House.TV, gardening, and content creation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/hero.webp" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0b'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='20' fill='%23c9a96a' text-anchor='middle'%3ELT%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a href="#top" class="brand" aria-label="Lashesta Turner home">
+          <svg class="brand__mark" viewBox="0 0 30 38" fill="none" aria-hidden="true">
+            <path d="M4 4 V28 H15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 4 H28 M23 4 V28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand__name">Lashesta<span class="dot">.</span></span>
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a class="nav__link" href="#photography">Photography</a></li>
+          <li><a class="nav__link" href="#branding">Branding</a></li>
+          <li><a class="nav__link" href="#trading">Day Trading</a></li>
+          <li><a class="nav__link" href="#garden">Garden</a></li>
+          <li><a class="nav__link" href="#creator">Creator</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button class="btn btn--primary nav__cta" data-book-trigger>Discovery Call</button>
+        </div>
+
+        <button class="nav__burger" data-menu-open aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" data-mobile-menu>
+    <button class="mobile-menu__close" data-menu-close aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="#photography" data-menu-close>Photography</a>
+      <a href="#branding" data-menu-close>Branding</a>
+      <a href="#trading" data-menu-close>Day Trading</a>
+      <a href="#garden" data-menu-close>Garden</a>
+      <a href="#creator" data-menu-close>Creator</a>
+      <a href="#" data-book-trigger data-menu-close style="color:var(--color-gold)">Book a Discovery Call</a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__grain"></div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Photographer · Trader · Creator</p>
+          <h1 class="hero__title">Lashesta <span class="script">Turner</span></h1>
+          <div class="hero__meta">
+            <p>Turning light, markets, and soil into stories — and helping brands look as good as they sound.</p>
+            <div class="hero__actions">
+              <a href="#photography" class="btn btn--primary">View Portfolio <span class="arrow">→</span></a>
+              <button class="btn btn--ghost" data-book-trigger>Book a Discovery Call</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero__portrait">
+          <img src="assets/img/hero.webp" alt="Lashesta Turner — professional portrait" />
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Portrait Photography <span class="star">✦</span></span>
+        <span class="marquee__item">Brand & Web Design <span class="star">✦</span></span>
+        <span class="marquee__item">Day Trading with 1House.TV <span class="star">✦</span></span>
+        <span class="marquee__item">Urban Gardening <span class="star">✦</span></span>
+        <span class="marquee__item">Content Creation <span class="star">✦</span></span>
+        <span class="marquee__item">Editorial Direction <span class="star">✦</span></span>
+        <span class="marquee__item">Portrait Photography <span class="star">✦</span></span>
+        <span class="marquee__item">Brand & Web Design <span class="star">✦</span></span>
+        <span class="marquee__item">Day Trading with 1House.TV <span class="star">✦</span></span>
+        <span class="marquee__item">Urban Gardening <span class="star">✦</span></span>
+        <span class="marquee__item">Content Creation <span class="star">✦</span></span>
+        <span class="marquee__item">Editorial Direction <span class="star">✦</span></span>
+      </div>
+    </div>
+
+    <!-- ============ PHOTOGRAPHY PORTFOLIO ============ -->
+    <section class="section gallery" id="photography">
+      <div class="container">
+        <div class="section-head section-head--row reveal">
+          <div>
+            <p class="eyebrow">01 — Photography</p>
+            <h2 class="section-title">Visual <span class="script">stories</span> worth keeping</h2>
+          </div>
+          <p class="section-lede">Editorial portraits, fashion, and cinematic moments. Filter by category and book a discovery call straight from any shot.</p>
+        </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Filter gallery">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="portrait">Portraits</button>
+          <button class="filter-btn" data-filter="fashion">Fashion</button>
+          <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+        </div>
+
+        <div class="gallery__grid">
+          <article class="shot shot--lg reveal" data-category="portrait" tabindex="0">
+            <img src="assets/img/gallery-1.webp" alt="Elegant portrait of a woman in a burnt orange dress" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Portrait</span>
+              <h3 class="shot__title">Confidence</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+
+          <article class="shot shot--md reveal" data-category="portrait" tabindex="0">
+            <img src="assets/img/gallery-2.webp" alt="Professional studio portrait of a woman in a white blazer" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Portrait</span>
+              <h3 class="shot__title">Executive</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+
+          <article class="shot shot--tall reveal" data-category="fashion" tabindex="0">
+            <img src="assets/img/gallery-3.webp" alt="Fashion portrait of a woman in a gold pleated skirt" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Fashion</span>
+              <h3 class="shot__title">Golden Hour</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+
+          <article class="shot shot--wide reveal" data-category="lifestyle" tabindex="0">
+            <img src="assets/img/gallery-4.webp" alt="Lifestyle portrait of a woman in a modern kitchen" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Lifestyle</span>
+              <h3 class="shot__title">Modern Living</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+
+          <article class="shot shot--tall reveal" data-category="lifestyle" tabindex="0">
+            <img src="assets/img/gallery-5.webp" alt="Cozy lifestyle portrait of a woman on a white sofa" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Lifestyle</span>
+              <h3 class="shot__title">Quiet Moments</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+
+          <article class="shot shot--sm reveal" data-category="branding" tabindex="0">
+            <img src="assets/img/gallery-6.webp" alt="Branding portrait of a woman on a kitchen counter" loading="lazy" />
+            <div class="shot__overlay">
+              <span class="shot__cat">Branding</span>
+              <h3 class="shot__title">Brand Story</h3>
+              <button class="shot__book" data-book-trigger data-service="Photography">Book a discovery call →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRANDING & WEBSITES ============ -->
+    <section class="section branding" id="branding">
+      <div class="container">
+        <div class="branding__layout">
+          <div class="branding__visual reveal">
+            <img src="assets/img/branding-portrait.webp" alt="Lashesta Turner behind the camera with her DSLR" loading="lazy" />
+            <span class="branding__chip">Shesta Turner Studios</span>
+          </div>
+          <div class="branding__content">
+            <div class="section-head reveal" style="max-width:60ch">
+              <p class="eyebrow">02 — Branding & Websites</p>
+              <h2 class="section-title">Brands that look as <span class="script">good</span> as they sound</h2>
+              <p class="section-lede">Visual identity, web design, and content direction for founders and creatives who want a cohesive, elevated presence — from logo to launch.</p>
+            </div>
+
+            <div class="brand-list">
+              <div class="brand-service reveal">
+                <span class="brand-service__num">01</span>
+                <div>
+                  <div class="brand-service__title">Brand Identity</div>
+                  <div class="brand-service__desc">Logo suite, color, type, and a brand guide that keeps everything on-tone.</div>
+                </div>
+                <a class="brand-service__cta" href="#" data-book-trigger data-service="Branding">Discovery call →</a>
+              </div>
+              <div class="brand-service reveal">
+                <span class="brand-service__num">02</span>
+                <div>
+                  <div class="brand-service__title">Website Design</div>
+                  <div class="brand-service__desc">Custom, fast, mobile-first sites built to convert — designed to match your brand.</div>
+                </div>
+                <a class="brand-service__cta" href="#" data-book-trigger data-service="Website Design">Discovery call →</a>
+              </div>
+              <div class="brand-service reveal">
+                <span class="brand-service__num">03</span>
+                <div>
+                  <div class="brand-service__title">Content Direction</div>
+                  <div class="brand-service__desc">Photo, video, and social strategy so your brand shows up consistently everywhere.</div>
+                </div>
+                <a class="brand-service__cta" href="#" data-book-trigger data-service="Content Creation">Discovery call →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DAY TRADING — 1House.TV ============ -->
+    <section class="section trading" id="trading">
+      <div class="container">
+        <div class="trading__layout">
+          <div class="reveal">
+            <p class="eyebrow">03 — Day Trading</p>
+            <h2 class="section-title">Trade with a <span class="script">plan</span></h2>
+            <p class="section-lede">My day-trading education runs on <strong style="color:var(--color-gold);font-weight:500">1House.TV</strong> — the first education streaming platform for traders. Live streams with working traders, plus an on-demand library you can learn from anytime.</p>
+            <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-4)">Subscriptions are month-to-month and cancel anytime.</p>
+          </div>
+
+          <div class="reveal">
+            <div class="trading__visual">
+              <span class="trading__badge">Powered by 1House.TV</span>
+              <img src="assets/img/trading.webp" alt="Elegant candlestick trading chart in gold tones" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <div class="pkg-grid">
+          <div class="pkg reveal">
+            <span class="pkg__name">Starter</span>
+            <div class="pkg__price">Free<span class="per">/ preview</span></div>
+            <ul class="pkg__features">
+              <li>Sample on-demand lessons</li>
+              <li>Community access</li>
+              <li>Educator spotlight reels</li>
+            </ul>
+            <a class="btn btn--ghost pkg__btn" href="https://1house.tv" target="_blank" rel="noopener">Explore on 1House.TV →</a>
+          </div>
+
+          <div class="pkg pkg--featured reveal">
+            <span class="pkg__tag">Most popular</span>
+            <span class="pkg__name">Monthly</span>
+            <div class="pkg__price">Subscribe<span class="per">/ membership</span></div>
+            <ul class="pkg__features">
+              <li>All live trading streams</li>
+              <li>Full on-demand education library</li>
+              <li>Multi-educator access</li>
+              <li>Cancel anytime</li>
+            </ul>
+            <a class="btn btn--primary pkg__btn" href="https://1house.tv" target="_blank" rel="noopener">Join on 1House.TV →</a>
+          </div>
+
+          <div class="pkg reveal">
+            <span class="pkg__name">Annual</span>
+            <div class="pkg__price">Save<span class="per">/ best value</span></div>
+            <ul class="pkg__features">
+              <li>Everything in Monthly</li>
+              <li>Best value for committed traders</li>
+              <li>Priority stream access</li>
+            </ul>
+            <a class="btn btn--ghost pkg__btn" href="https://1house.tv" target="_blank" rel="noopener">View on 1House.TV →</a>
+          </div>
+        </div>
+        <p class="trading__note">Prototype — package names and features are representative. Current pricing and full details live on <a href="https://1house.tv" target="_blank" rel="noopener" style="color:var(--color-gold)">1house.tv</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ GARDENING ============ -->
+    <section class="section garden" id="garden">
+      <div class="container">
+        <div class="garden__layout">
+          <div class="garden__media reveal">
+            <img src="assets/img/gardening.webp" alt="Hands tending a lush raised garden bed at golden hour" loading="lazy" />
+            <span class="garden__chip">Spring, Texas · Zone 9a</span>
+          </div>
+          <div class="reveal">
+            <p class="eyebrow">04 — The Garden</p>
+            <h2 class="section-title">Growing things, growing <span class="script">patience</span></h2>
+            <p class="section-lede">Off the screen and into the soil. A backyard food garden documenting what grows, what fails, and the slow joy of the seasons.</p>
+
+            <div class="season-grid">
+              <div class="season"><div class="season__name">Spring</div><div class="season__crop">Tomatoes · Peppers · Basil</div></div>
+              <div class="season"><div class="season__name">Summer</div><div class="season__crop">Okra · Eggplant · Sunflowers</div></div>
+              <div class="season"><div class="season__name">Fall</div><div class="season__crop">Greens · Carrots · Garlic</div></div>
+              <div class="season"><div class="season__name">Winter</div><div class="season__crop">Kale · Cover crops · Herbs</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTENT CREATOR (Blog + Social) ============ -->
+    <section class="section creator" id="creator">
+      <div class="container">
+        <div class="section-head section-head--row reveal">
+          <div>
+            <p class="eyebrow">05 — Content Creator</p>
+            <h2 class="section-title">The <span class="script">journal</span> & the feed</h2>
+          </div>
+          <p class="section-lede">Writing and content across every discipline — plus a unified social stream.</p>
+        </div>
+
+        <div class="creator__grid">
+          <!-- Blog -->
+          <div class="blog__grid">
+            <article class="post-card reveal">
+              <a class="post-card__media" href="#"><img src="assets/img/blog-hero.webp" alt="Professional portrait by Lashesta Turner" loading="lazy" /></a>
+              <div class="post-card__body">
+                <div class="post-card__meta"><span class="cat">Photography</span><span>6 min read</span></div>
+                <h3 class="post-card__title">Five lighting setups I use on every portrait shoot</h3>
+                <p class="post-card__excerpt">The repeatable frameworks behind dramatic low-key images — and how to fake a premium modifier on a budget.</p>
+                <span class="post-card__read">Read article →</span>
+              </div>
+            </article>
+
+            <article class="post-card reveal">
+              <a class="post-card__media" href="#"><img src="assets/img/trading.webp" alt="Abstract trading chart" loading="lazy" /></a>
+              <div class="post-card__body">
+                <div class="post-card__meta"><span class="cat">Trading</span><span>8 min read</span></div>
+                <h3 class="post-card__title">Why your risk management beats your strategy</h3>
+                <p class="post-card__excerpt">Position sizing, the math of drawdowns, and the one rule that keeps traders in the game.</p>
+                <span class="post-card__read">Read article →</span>
+              </div>
+            </article>
+
+            <article class="post-card reveal">
+              <a class="post-card__media" href="#"><img src="assets/img/gardening.webp" alt="Lush garden bed at golden hour" loading="lazy" /></a>
+              <div class="post-card__body">
+                <div class="post-card__meta"><span class="cat">Garden</span><span>5 min read</span></div>
+                <h3 class="post-card__title">Building a raised bed in a Texas summer</h3>
+                <p class="post-card__excerpt">What survives 100° days, drip irrigation basics, and the mulch trick that saved my tomatoes.</p>
+                <span class="post-card__read">Read article →</span>
+              </div>
+            </article>
+
+            <article class="post-card reveal">
+              <a class="post-card__media" href="#"><img src="assets/img/gallery-6.webp" alt="Branding portrait session" loading="lazy" /></a>
+              <div class="post-card__body">
+                <div class="post-card__meta"><span class="cat">Branding</span><span>4 min read</span></div>
+                <h3 class="post-card__title">A brand is a feeling — build it on purpose</h3>
+                <p class="post-card__excerpt">How to define your brand voice and let it guide every visual choice you make.</p>
+                <span class="post-card__read">Read article →</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Social rail -->
+          <aside class="social-rail reveal">
+            <div data-social-rail></div>
+            <div class="social__handles">
+              <a class="social-handle" href="#">Instagram</a>
+              <a class="social-handle" href="#">LinkedIn</a>
+              <a class="social-handle" href="#">X / Twitter</a>
+              <a class="social-handle" href="#">YouTube</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING CTA ============ -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="book-cta reveal">
+          <span class="book-cta__script">let's begin</span>
+          <h2 class="book-cta__title">Create something <span class="script">worth framing</span></h2>
+          <p>Photography, branding, websites, or content — book a discovery call and we'll map it out together.</p>
+          <div class="book-cta__actions">
+            <button class="btn btn--primary" data-book-trigger>Book a Discovery Call</button>
+            <a href="#photography" class="btn btn--ghost">Browse the portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">Lashesta<span class="dot">.</span></div>
+          <p class="footer__tag">Photographer, trader, and creator based in Spring, Texas. Available worldwide for photography, branding, and web design.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <ul role="list">
+            <li><a href="#photography">Photography</a></li>
+            <li><a href="#branding">Branding</a></li>
+            <li><a href="#trading">Day Trading</a></li>
+            <li><a href="#garden">Garden</a></li>
+            <li><a href="#creator">Creator</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <ul role="list">
+            <li><a href="#creator">Instagram</a></li>
+            <li><a href="#creator">LinkedIn</a></li>
+            <li><a href="#creator">YouTube</a></li>
+            <li><a href="#" data-book-trigger>Book a discovery call</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year></span> Lashesta Turner. Prototype site.</span>
+        <span>Designed & built with intention.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ BOOKING MODAL ============ -->
+  <div class="booking-overlay" data-booking-overlay aria-hidden="true">
+    <div class="booking" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+      <div class="booking__head">
+        <div>
+          <span class="script" style="font-size:var(--text-xl)">discovery call</span>
+          <h3 id="booking-title">Book a discovery call</h3>
+          <p data-booking-subtitle>Tell me what you're dreaming up and I'll reach out within 24 hours.</p>
+        </div>
+        <button class="booking__close" data-book-close aria-label="Close form">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form class="booking__body" data-booking-form>
+        <input type="hidden" name="service" data-service-field value="Photography" />
+
+        <div class="field">
+          <span class="field__label">What can I help with?</span>
+          <div class="session-types" data-session-types>
+            <button type="button" class="session-type is-selected" data-service-name="Photography" data-service-price="Discovery call — free">
+              <span class="session-type__name">Photography</span>
+              <span class="session-type__price">Discovery call — free</span>
+            </button>
+            <button type="button" class="session-type" data-service-name="Content Creation" data-service-price="Discovery call — free">
+              <span class="session-type__name">Content Creation</span>
+              <span class="session-type__price">Discovery call — free</span>
+            </button>
+            <button type="button" class="session-type" data-service-name="Website Design" data-service-price="Discovery call — free">
+              <span class="session-type__name">Website Design</span>
+              <span class="session-type__price">Discovery call — free</span>
+            </button>
+            <button type="button" class="session-type" data-service-name="Branding" data-service-price="Discovery call — free">
+              <span class="session-type__name">Branding</span>
+              <span class="session-type__price">Discovery call — free</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label class="field__label" for="bk-name">Name</label>
+            <input class="field__input" id="bk-name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="bk-email">Email</label>
+            <input class="field__input" id="bk-email" name="email" type="email" placeholder="you@email.com" required />
+          </div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label class="field__label" for="bk-phone">Phone (optional)</label>
+            <input class="field__input" id="bk-phone" name="phone" type="tel" placeholder="(555) 000-0000" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="bk-date">Preferred date</label>
+            <input class="field__input" id="bk-date" name="date" type="date" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="bk-time">Preferred time</label>
+          <select class="field__select" id="bk-time" name="time" required>
+            <option value="" disabled selected>Select a window</option>
+            <option>Morning (9–12)</option>
+            <option>Afternoon (12–4)</option>
+            <option>Evening (4–7)</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="bk-notes">Project details</label>
+          <textarea class="field__textarea" id="bk-notes" name="notes" placeholder="Tell me about the vibe, timeline, and what you're hoping to create..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Request discovery call →</button>
+        <p style="font-size:var(--text-xs);color:var(--color-text-faint);text-align:center;margin-top:var(--space-3)">Prototype — no payment is taken. Submitting opens a confirmation summary.</p>
+      </form>
+
+      <div class="booking__success" data-booking-success hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        <span class="script">thank you</span>
+        <h3>Discovery call requested</h3>
+        <p data-success-summary></p>
+        <button class="btn btn--ghost" style="margin-top:var(--space-6)" data-book-close>Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
