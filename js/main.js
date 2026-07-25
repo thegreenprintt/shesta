@@ -4,6 +4,30 @@
 (function () {
   'use strict';
 
+  /* ---------- Hero parallax ---------- */
+  (function () {
+    var portrait = document.querySelector('.hero__portrait');
+    var bg = document.querySelector('.hero__bg');
+    if (!portrait && !bg) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    var ticking = false;
+    function update() {
+      var y = window.scrollY;
+      if (y < window.innerHeight) {
+        if (portrait) portrait.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+        if (bg) bg.style.transform = 'translateY(' + (y * 0.06) + 'px)';
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
   /* ---------- Theme toggle ---------- */
   (function () {
     var toggle = document.querySelector('[data-theme-toggle]');
@@ -123,62 +147,6 @@
       });
     }, { threshold: 0.12 });
     els.forEach(function (el) { io.observe(el); });
-  })();
-
-  /* ---------- Social feed (mocked integrated feed) ---------- */
-  (function () {
-    var grid = document.querySelector('[data-social-rail]');
-    if (!grid) return;
-    var posts = [
-      {
-        img: 'assets/img/gallery-3.webp',
-        handle: '@lashesta.turner',
-        platform: 'Instagram · 2d',
-        avatar: 'L',
-        caption: 'Behind the scenes from the Golden Hours editorial. Warm rim-light does all the heavy lifting.',
-        likes: '1.2k', comments: '48'
-      },
-      {
-        img: 'assets/img/trading.webp',
-        handle: 'Lashesta Turner',
-        platform: 'X · 5h',
-        avatar: 'L',
-        caption: 'Risk first, strategy second. If you can\'t define your stop before entry, you\'re gambling.',
-        likes: '320', comments: '61'
-      },
-      {
-        img: 'assets/img/gardening.webp',
-        handle: '@lashesta.turner',
-        platform: 'Instagram · 1w',
-        avatar: 'L',
-        caption: 'First tomato harvest of the season. Patience compounds — in the garden and the markets.',
-        likes: '2.4k', comments: '187'
-      }
-    ];
-
-    var heartIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
-    var commentIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
-
-    grid.innerHTML = posts.map(function (p) {
-      return ''
-        + '<div class="social-card">'
-        + '  <div class="social-card__media"><img src="' + p.img + '" alt="" loading="lazy"></div>'
-        + '  <div class="social-card__body">'
-        + '    <div class="social-card__head">'
-        + '      <div class="social-card__avatar">' + p.avatar + '</div>'
-        + '      <div>'
-        + '        <div class="social-card__handle">' + p.handle + '</div>'
-        + '        <div class="social-card__platform">' + p.platform + '</div>'
-        + '      </div>'
-        + '    </div>'
-        + '    <p class="social-card__caption">' + p.caption + '</p>'
-        + '    <div class="social-card__stats">'
-        + '      <span>' + heartIcon + p.likes + '</span>'
-        + '      <span>' + commentIcon + p.comments + '</span>'
-        + '    </div>'
-        + '  </div>'
-        + '</div>';
-    }).join('');
   })();
 
   /* ---------- Booking module ---------- */

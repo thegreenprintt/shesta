@@ -197,15 +197,15 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   padding: var(--space-4) var(--space-7); border-radius: var(--radius-full);
   border: 1px solid transparent;
   transition: background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), transform var(--transition-interactive);
-  white-space: nowrap;
+  white-space: nowrap; flex-shrink: 0;
 }
 .btn:active { transform: translateY(1px); }
 
 .btn--primary { background: var(--color-gold); color: var(--color-text-inverse); }
-.btn--primary:hover { background: var(--color-gold-hover); }
+.btn--primary:hover { background: var(--color-gold-hover); transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(201,169,106,0.55); }
 
 .btn--ghost { background: transparent; color: var(--color-text); border-color: var(--color-border-strong); }
-.btn--ghost:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.btn--ghost:hover { border-color: var(--color-gold); color: var(--color-gold); transform: translateY(-2px); box-shadow: 0 12px 28px -10px rgba(201,169,106,0.35); }
 
 .btn--block { width: 100%; }
 .btn .arrow { transition: transform var(--transition-interactive); }
@@ -241,7 +241,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .nav__link:hover { color: var(--color-text); }
 .nav__link.is-active { color: var(--color-gold); }
 
-.nav__actions { display: flex; align-items: center; gap: var(--space-3); }
+.nav__actions { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
 
 .theme-toggle {
   display: grid; place-items: center; width: 40px; height: 40px;
@@ -559,3 +559,23 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
    ========================================================= */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+.gallery__grid .reveal:nth-child(1) { transition-delay: 0ms; }
+.gallery__grid .reveal:nth-child(2) { transition-delay: 80ms; }
+.gallery__grid .reveal:nth-child(3) { transition-delay: 160ms; }
+.gallery__grid .reveal:nth-child(4) { transition-delay: 240ms; }
+.gallery__grid .reveal:nth-child(5) { transition-delay: 320ms; }
+.gallery__grid .reveal:nth-child(6) { transition-delay: 400ms; }
+
+.pkg-grid .reveal:nth-child(1) { transition-delay: 0ms; }
+.pkg-grid .reveal:nth-child(2) { transition-delay: 100ms; }
+.pkg-grid .reveal:nth-child(3) { transition-delay: 200ms; }
+
+.brand-list .reveal:nth-child(1) { transition-delay: 0ms; }
+.brand-list .reveal:nth-child(2) { transition-delay: 100ms; }
+.brand-list .reveal:nth-child(3) { transition-delay: 200ms; }
+
+.season-grid .season:nth-child(1) { transition-delay: 0ms; }
+.season-grid .season:nth-child(2) { transition-delay: 80ms; }
+.season-grid .season:nth-child(3) { transition-delay: 160ms; }
+.season-grid .season:nth-child(4) { transition-delay: 240ms; }
