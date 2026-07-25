@@ -803,3 +803,74 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 
 /* hero eyebrow sits outside a .reveal wrapper — draw its rule on load */
 .hero .eyebrow::after { width: 56px; transition-delay: 500ms; }
+
+/* =========================================================
+   PROCESS + FAQ
+   ========================================================= */
+.container--narrow { max-width: var(--content-narrow); }
+
+/* ---- Process ---- */
+.process { border-block: 1px solid var(--color-divider); }
+.process__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6);
+  margin-top: var(--space-12); list-style: none; padding: 0; counter-reset: none;
+}
+@media (max-width: 900px) { .process__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .process__grid { grid-template-columns: 1fr; } }
+.process__step {
+  position: relative; padding: var(--space-8) var(--space-6) var(--space-8);
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: transform 500ms cubic-bezier(0.16,1,0.3,1), border-color 400ms ease, box-shadow 500ms ease;
+}
+.process__step:hover {
+  transform: translateY(-6px); border-color: var(--color-gold-line);
+  box-shadow: 0 28px 60px -34px rgba(0,0,0,0.9);
+}
+/* connecting hairline between steps */
+.process__step::after {
+  content: ''; position: absolute; top: 50%; right: calc(var(--space-6) * -1 - 1px);
+  width: var(--space-6); height: 1px; background: var(--color-gold-line); opacity: 0.5;
+}
+.process__step:last-child::after { display: none; }
+@media (max-width: 900px) { .process__step::after { display: none; } }
+.process__num {
+  display: inline-block; font-family: var(--font-display); font-style: italic;
+  font-size: var(--text-xl); color: var(--color-gold); line-height: 1;
+}
+.process__title {
+  font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500;
+  color: var(--color-text); margin-top: var(--space-3);
+}
+.process__desc { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); line-height: 1.65; }
+
+/* ---- FAQ accordion ---- */
+.faq__list { margin-top: var(--space-10); display: flex; flex-direction: column; gap: var(--space-3); }
+.faq__item {
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  background: var(--color-surface); overflow: hidden;
+  transition: border-color 400ms ease, background 400ms ease;
+}
+.faq__item[open] { border-color: var(--color-gold-line); background: var(--color-surface-2); }
+.faq__q {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  padding: var(--space-6); cursor: pointer; list-style: none;
+  font-family: var(--font-display); font-size: var(--text-base); font-weight: 500;
+  color: var(--color-text); transition: color var(--transition-interactive);
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { color: var(--color-gold); }
+.faq__icon { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+.faq__icon::before, .faq__icon::after {
+  content: ''; position: absolute; background: var(--color-gold);
+  transition: transform 320ms cubic-bezier(0.16,1,0.3,1), opacity 320ms ease;
+}
+.faq__icon::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
+.faq__icon::after  { left: 6px; top: 0; width: 1.5px; height: 14px; }
+.faq__item[open] .faq__icon::after { transform: rotate(90deg); opacity: 0; }
+.faq__a {
+  padding: 0 var(--space-6) var(--space-6);
+  font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.75;
+  animation: faq-open 420ms cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes faq-open { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }

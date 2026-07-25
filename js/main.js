@@ -402,3 +402,16 @@
   })();
 
 })();
+
+/* ---------- FAQ: only one answer open at a time ---------- */
+(function () {
+  var items = document.querySelectorAll('.faq__item');
+  Array.prototype.forEach.call(items, function (item) {
+    item.addEventListener('toggle', function () {
+      if (!item.open) return;
+      Array.prototype.forEach.call(items, function (other) {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+})();
