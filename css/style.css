@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* LaShesta Turner
    Fonts: Pinyon Script, Cormorant Garamond, Jost */
 
@@ -271,9 +272,19 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .mobile-menu {
   position: fixed; inset: 0; z-index: 200; background: var(--color-bg);
   display: flex; flex-direction: column; padding: var(--space-12) var(--space-6);
-  transform: translateY(-100%); transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  min-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease, visibility 0s linear 0.45s;
 }
-.mobile-menu.is-open { transform: translateY(0); }
+.mobile-menu > * { flex-shrink: 0; }
+.mobile-menu.is-open {
+  transform: translateY(0); visibility: visible; opacity: 1; pointer-events: auto;
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease, visibility 0s;
+}
 .mobile-menu__close { align-self: flex-end; width: 44px; height: 44px; place-items: center; border: 1px solid var(--color-border-strong); border-radius: var(--radius-full); }
 .mobile-menu__links { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-8); }
 .mobile-menu__links a {
@@ -288,7 +299,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 
 /* =========================================================
-   HERO â€” split layout with real headshot
+   HERO - split layout with real headshot
    ========================================================= */
 .hero { position: relative; min-height: 92dvh; display: flex; align-items: center; overflow: hidden; isolation: isolate; padding-top: var(--space-20); }
 .hero__bg { position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse at 72% 38%, rgba(201,169,106,0.07) 0%, transparent 55%), var(--color-bg); }
@@ -367,7 +378,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 
 /* =========================================================
-   DAY TRADING â€” 1House.TV packages
+   DAY TRADING - 1House.TV packages
    ========================================================= */
 .trading { background: var(--color-surface); border-block: 1px solid var(--color-divider); }
 .trading__layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--space-14); align-items: center; }
@@ -399,7 +410,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .pkg__price .per { font-family: var(--font-body); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-faint); margin-left: var(--space-1); }
 .pkg__features { list-style: none; margin: var(--space-5) 0 var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); }
 .pkg__features li { font-size: var(--text-sm); color: var(--color-text-muted); display: flex; gap: var(--space-3); align-items: flex-start; }
-.pkg__features li::before { content: 'âœ¦'; color: var(--color-gold); font-size: 0.85em; margin-top: 0.15em; flex-shrink: 0; }
+.pkg__features li::before { content: '\2726'; color: var(--color-gold); font-size: 0.85em; margin-top: 0.15em; flex-shrink: 0; }
 .pkg__btn { margin-top: auto; }
 
 .trading__note { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-5); text-align: center; }
@@ -797,7 +808,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   .hero__text > *, .hero__portrait { opacity: 1; }
 }
 
-/* hero eyebrow sits outside a .reveal wrapper â€” draw its rule on load */
+/* hero eyebrow sits outside a .reveal wrapper - draw its rule on load */
 .hero .eyebrow::after { width: 56px; transition-delay: 500ms; }
 
 /* Process + FAQ */
@@ -871,7 +882,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 
 /* ---- Pricing ---- */
 .pkg__features li.is-off { color: var(--color-text-faint); opacity: 0.55; }
-.pkg__features li.is-off::before { content: 'â€”'; color: var(--color-text-faint); }
+.pkg__features li.is-off::before { content: '\2014'; color: var(--color-text-faint); }
 .pkg__features li strong { color: var(--color-text); font-weight: 500; }
 .pkg__features li em { font-style: italic; color: var(--color-gold); }
 .pkg--featured .pkg__features li:not(.is-off)::before { color: var(--color-gold-bright); }
