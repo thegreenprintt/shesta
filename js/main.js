@@ -1,5 +1,5 @@
 /* =========================================================
-   Lashesta Turner — interactivity
+   Lashesta Turner site scripts
    ========================================================= */
 (function () {
   'use strict';
@@ -168,7 +168,7 @@
       success.hidden = true;
       if (service) {
         serviceField.value = service;
-        subtitle.textContent = 'Discovery call for ' + service + ' — tell me what you\'re dreaming up.';
+        subtitle.textContent = 'Discovery call for ' + service + '. Tell me what you have in mind.';
         sessionTypes.forEach(function (st) {
           st.classList.toggle('is-selected', st.getAttribute('data-service-name') === service);
         });
@@ -205,7 +205,7 @@
         sessionTypes.forEach(function (s) { s.classList.remove('is-selected'); });
         st.classList.add('is-selected');
         serviceField.value = st.getAttribute('data-service-name');
-        subtitle.textContent = 'Discovery call for ' + st.getAttribute('data-service-name') + ' — tell me what you\'re dreaming up.';
+        subtitle.textContent = 'Discovery call for ' + st.getAttribute('data-service-name') + '. Tell me what you have in mind.';
       });
     });
 
@@ -215,13 +215,7 @@
       dateInput.min = new Date().toISOString().split('T')[0];
     }
 
-    /* =====================================================
-       EMAIL DELIVERY
-       Paste the Formspree endpoint below and submissions
-       start emailing Lashesta immediately. Until then the
-       form still shows the confirmation, but sends nothing.
-       Get one free at https://formspree.io -> New Form.
-       ===================================================== */
+    // Form submissions are emailed via Formspree.
     var FORM_ENDPOINT = 'https://formspree.io/f/xvzevwvw';
 
     var submitBtn = form.querySelector('button[type="submit"]');
@@ -243,11 +237,9 @@
         success.hidden = false;
       }
 
-      // Give the email a useful subject line in Lashesta's inbox
       data.append('_subject', 'New discovery call request — ' + service + ' — ' + (name || 'no name'));
 
       if (!FORM_ENDPOINT) {
-        // No endpoint configured yet — behave as before.
         showSuccess();
         return;
       }
@@ -280,16 +272,13 @@
 
 })();
 
-/* =========================================================
-   CINEMATIC LAYER
-   Lightbox · scroll progress · sticky header · parallax
-   ========================================================= */
+/* Lightbox, scroll progress, sticky header, parallax */
 (function () {
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Scroll progress bar + sticky header state ---------- */
+  /* ---------- scroll progress + header state ---------- */
   (function () {
     var header = document.getElementById('header');
     var bar = document.createElement('div');
@@ -312,12 +301,12 @@
     onScroll();
   })();
 
-  /* ---------- Gallery lightbox ---------- */
+  /* ---------- gallery lightbox ---------- */
   (function () {
     var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
     if (!shots.length) return;
 
-    // Build the lightbox shell once
+    // build the lightbox shell
     var box = document.createElement('div');
     box.className = 'lightbox';
     box.setAttribute('aria-hidden', 'true');
@@ -343,7 +332,7 @@
     var index = 0;
     var lastFocus = null;
 
-    // Add the expand glyph + make each shot keyboard-openable
+    // expand glyph + keyboard support
     shots.forEach(function (shot, i) {
       var glyph = document.createElement('span');
       glyph.className = 'shot__expand';
@@ -352,7 +341,7 @@
       shot.appendChild(glyph);
 
       shot.addEventListener('click', function (e) {
-        // don't hijack the "book a discovery call" button inside the overlay
+        // ignore clicks on the book button inside the overlay
         if (e.target.closest('[data-book-trigger]')) return;
         open(i);
       });
@@ -398,7 +387,7 @@
 
     function step(dir) {
       index = (index + dir + shots.length) % shots.length;
-      // fade the swap so it doesn't snap
+      // fade the swap
       img.style.opacity = '0';
       setTimeout(function () { render(); img.style.opacity = ''; }, reduceMotion ? 0 : 160);
     }
@@ -417,7 +406,7 @@
     });
   })();
 
-  /* ---------- Subtle hero parallax ---------- */
+  /* ---------- hero parallax ---------- */
   (function () {
     if (reduceMotion) return;
     var portrait = document.querySelector('.hero__portrait');
@@ -436,7 +425,7 @@
     }, { passive: true });
   })();
 
-  /* ---------- Stagger the reveal of sibling cards ---------- */
+  /* ---------- stagger sibling cards ---------- */
   (function () {
     var groups = document.querySelectorAll('.pkg-grid, .season-grid, .brand-list, .gallery__grid');
     Array.prototype.forEach.call(groups, function (group) {
@@ -449,7 +438,7 @@
 
 })();
 
-/* ---------- FAQ: only one answer open at a time ---------- */
+/* ---------- FAQ accordion ---------- */
 (function () {
   var items = document.querySelectorAll('.faq__item');
   Array.prototype.forEach.call(items, function (item) {

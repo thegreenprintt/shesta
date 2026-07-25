@@ -1,7 +1,5 @@
-/* =========================================================
-   LASHESTA TURNER — Black · Champagne Gold · Soft White
-   Feminine editorial: Pinyon Script (cursive) · Cormorant (serif) · Jost (sans)
-   ========================================================= */
+/* Lashesta Turner
+   Fonts: Pinyon Script, Cormorant Garamond, Jost */
 
 :root {
   /* Type scale */
@@ -198,12 +196,12 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   padding: var(--space-4) var(--space-8); border-radius: var(--radius-full);
   border: 1px solid transparent;
   position: relative; overflow: hidden; isolation: isolate;
-  text-indent: 0.12em; /* optically re-centre against trailing letter-spacing */
+  text-indent: 0.12em; /* re-centre against trailing letter-spacing */
   transition: background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
   white-space: nowrap; flex-shrink: 0;
 }
 .btn > * { position: relative; z-index: 1; }
-/* cinematic shine sweep */
+/* shine sweep */
 .btn::after {
   content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
   background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
@@ -596,10 +594,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .season-grid .season:nth-child(3) { transition-delay: 160ms; }
 .season-grid .season:nth-child(4) { transition-delay: 240ms; }
 
-/* =========================================================
-   CINEMATIC LAYER — motion, depth, and editorial polish
-   Colours & type all inherit from the tokens above.
-   ========================================================= */
+/* Motion and hover states */
 
 /* ---- Garden art panel ---- */
 .garden__media--art { aspect-ratio: 4 / 3; background: var(--color-bg); }
@@ -624,7 +619,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 @keyframes garden-grow { to { opacity: 1; stroke-dashoffset: 0; } }
 @keyframes garden-leaf { from { opacity: 0; } to { opacity: 1; } }
 .garden__art-bloom circle { opacity: 0; animation: garden-leaf 900ms ease forwards; animation-delay: 820ms; }
-/* slow breathing glow on the sun disc */
+/* glow on the sun disc */
 .garden__media--art::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(60% 55% at 70% 30%, rgba(228,200,135,0.10), transparent 70%);
@@ -632,12 +627,12 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 @keyframes garden-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
 
-/* ---- Cinematic scroll reveal (upgrades the base .reveal) ---- */
+/* ---- Scroll reveal ---- */
 .reveal { transition: opacity 900ms cubic-bezier(0.16,1,0.3,1), transform 900ms cubic-bezier(0.16,1,0.3,1), filter 900ms ease; }
 .reveal:not(.is-visible) { filter: blur(6px); }
 .reveal.is-visible { filter: blur(0); }
 
-/* ---- Header: blur + shrink once scrolled ---- */
+/* ---- Header ---- */
 .header { transition: background 400ms ease, backdrop-filter 400ms ease, border-color 400ms ease, padding 400ms ease; }
 .header.is-scrolled {
   background: rgba(10,10,11,0.72);
@@ -647,7 +642,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 [data-theme='light'] .header.is-scrolled { background: rgba(246,242,234,0.78); }
 
-/* thin gold scroll-progress bar */
+/* scroll progress bar */
 .scroll-progress {
   position: fixed; top: 0; left: 0; height: 2px; width: 0;
   background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright));
@@ -655,7 +650,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   box-shadow: 0 0 14px var(--color-gold-glow);
 }
 
-/* ---- Hero: staged entrance + slow drift ---- */
+/* ---- Hero ---- */
 .hero__text > *,
 .hero__portrait { opacity: 0; animation: hero-rise 1200ms cubic-bezier(0.16,1,0.3,1) forwards; }
 .hero__text .eyebrow    { animation-delay: 120ms; }
@@ -664,11 +659,11 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .hero__portrait         { animation-delay: 340ms; }
 @keyframes hero-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
-/* very slow ken-burns on the hero portrait */
+/* slow zoom on the portrait */
 .hero__portrait img { animation: kenburns 22s ease-in-out infinite alternate; will-change: transform; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
 
-/* drifting gold wash behind the hero */
+/* gold wash behind the hero */
 .hero__bg::after {
   content: ''; position: absolute; inset: -20%;
   background: radial-gradient(45% 40% at 30% 25%, var(--color-gold-glow), transparent 70%);
@@ -680,7 +675,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   to   { transform: translate3d(4%, 3%, 0) scale(1.12); }
 }
 
-/* animated 'Scroll' cue */
+/* scroll cue */
 .hero__scroll { position: relative; }
 .hero__scroll::after {
   content: ''; position: absolute; left: 50%; bottom: -34px; width: 1px; height: 28px;
@@ -689,7 +684,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 @keyframes scroll-cue { 0%,100% { opacity: 0.2; transform: scaleY(0.5); } 50% { opacity: 1; transform: scaleY(1); } }
 
-/* ---- Section headings: gold rule that draws in ---- */
+/* ---- Section headings ---- */
 .eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); }
 .eyebrow::after {
   content: ''; height: 1px; width: 0; background: var(--color-gold-line);
@@ -698,7 +693,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .reveal.is-visible .eyebrow::after,
 .is-visible .eyebrow::after { width: 56px; }
 
-/* ---- Gallery: cinematic hover + click affordance ---- */
+/* ---- Gallery ---- */
 .shot { transition: border-color 400ms ease, box-shadow 500ms ease, transform 500ms cubic-bezier(0.16,1,0.3,1); }
 .shot:hover {
   border-color: var(--color-gold-line);
@@ -714,7 +709,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .shot:hover .shot__title,  .shot:focus-within .shot__title  { transform: none; opacity: 1; transition-delay: 120ms; }
 .shot:hover .shot__book,   .shot:focus-within .shot__book   { transform: none; opacity: 1; transition-delay: 180ms; }
 
-/* 'expand' glyph so people know a photo opens full-size */
+/* expand glyph */
 .shot__expand {
   position: absolute; top: var(--space-4); right: var(--space-4);
   width: 38px; height: 38px; display: grid; place-items: center;
@@ -779,14 +774,14 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .pkg__price { transition: color 400ms ease; }
 .pkg:hover .pkg__price { color: var(--color-gold-bright); }
 
-/* ---- Marquee: pause on hover so it feels considered ---- */
+/* ---- Marquee ---- */
 .marquee:hover .marquee__track { animation-play-state: paused; }
 
-/* ---- Booking modal: smoother cinematic entrance ---- */
+/* ---- Booking modal ---- */
 .booking { transition: transform 520ms cubic-bezier(0.16,1,0.3,1), opacity 360ms ease; }
 .booking-overlay:not(.is-open) .booking { transform: translateY(18px) scale(0.97); opacity: 0; }
 
-/* ---- Nav links: gold underline draw ---- */
+/* ---- Nav links ---- */
 .nav__link { position: relative; }
 .nav__link::after {
   content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0;
@@ -794,7 +789,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 .nav__link:hover::after { width: 100%; }
 
-/* ---- Respect reduced-motion preferences ---- */
+/* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .reveal:not(.is-visible) { filter: none; opacity: 1; transform: none; }
@@ -804,9 +799,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 /* hero eyebrow sits outside a .reveal wrapper — draw its rule on load */
 .hero .eyebrow::after { width: 56px; transition-delay: 500ms; }
 
-/* =========================================================
-   PROCESS + FAQ
-   ========================================================= */
+/* Process + FAQ */
 .container--narrow { max-width: var(--content-narrow); }
 
 /* ---- Process ---- */
@@ -827,7 +820,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   transform: translateY(-6px); border-color: var(--color-gold-line);
   box-shadow: 0 28px 60px -34px rgba(0,0,0,0.9);
 }
-/* connecting hairline between steps */
+/* hairline between steps */
 .process__step::after {
   content: ''; position: absolute; top: 50%; right: calc(var(--space-6) * -1 - 1px);
   width: var(--space-6); height: 1px; background: var(--color-gold-line); opacity: 0.5;
@@ -844,7 +837,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 .process__desc { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); line-height: 1.65; }
 
-/* ---- FAQ accordion ---- */
+/* ---- FAQ ---- */
 .faq__list { margin-top: var(--space-10); display: flex; flex-direction: column; gap: var(--space-3); }
 .faq__item {
   border: 1px solid var(--color-border); border-radius: var(--radius-lg);
@@ -875,7 +868,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 }
 @keyframes faq-open { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 
-/* ---- Pricing: "not included" rows so the upgrade is obvious ---- */
+/* ---- Pricing ---- */
 .pkg__features li.is-off { color: var(--color-text-faint); opacity: 0.55; }
 .pkg__features li.is-off::before { content: '—'; color: var(--color-text-faint); }
 .pkg__features li strong { color: var(--color-text); font-weight: 500; }
