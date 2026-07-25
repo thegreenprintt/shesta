@@ -233,3 +233,172 @@
   })();
 
 })();
+
+/* =========================================================
+   CINEMATIC LAYER
+   Lightbox · scroll progress · sticky header · parallax
+   ========================================================= */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Scroll progress bar + sticky header state ---------- */
+  (function () {
+    var header = document.getElementById('header');
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var scrolled = window.scrollY;
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+        if (header) header.classList.toggle('is-scrolled', scrolled > 40);
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  /* ---------- Gallery lightbox ---------- */
+  (function () {
+    var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+    if (!shots.length) return;
+
+    // Build the lightbox shell once
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML =
+      '<button class="lightbox__close" aria-label="Close">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+      '</button>' +
+      '<button class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>' +
+      '</button>' +
+      '<button class="lightbox__nav lightbox__nav--next" aria-label="Next photo">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>' +
+      '</button>' +
+      '<figure class="lightbox__figure">' +
+        '<img class="lightbox__img" alt="" />' +
+        '<figcaption class="lightbox__caption"><span data-lb-cat></span><em data-lb-title></em></figcaption>' +
+      '</figure>';
+    document.body.appendChild(box);
+
+    var img = box.querySelector('.lightbox__img');
+    var catEl = box.querySelector('[data-lb-cat]');
+    var titleEl = box.querySelector('[data-lb-title]');
+    var index = 0;
+    var lastFocus = null;
+
+    // Add the expand glyph + make each shot keyboard-openable
+    shots.forEach(function (shot, i) {
+      var glyph = document.createElement('span');
+      glyph.className = 'shot__expand';
+      glyph.setAttribute('aria-hidden', 'true');
+      glyph.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+      shot.appendChild(glyph);
+
+      shot.addEventListener('click', function (e) {
+        // don't hijack the "book a discovery call" button inside the overlay
+        if (e.target.closest('[data-book-trigger]')) return;
+        open(i);
+      });
+      shot.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.target.closest('[data-book-trigger]')) return;
+          e.preventDefault();
+          open(i);
+        }
+      });
+    });
+
+    function render() {
+      var shot = shots[index];
+      var source = shot.querySelector('img');
+      if (!source) return;
+      img.src = source.getAttribute('src');
+      img.alt = source.getAttribute('alt') || '';
+      var cat = shot.querySelector('.shot__cat');
+      var title = shot.querySelector('.shot__title');
+      catEl.textContent = cat ? cat.textContent : '';
+      titleEl.textContent = title ? title.textContent : '';
+    }
+
+    function open(i) {
+      index = i;
+      lastFocus = document.activeElement;
+      render();
+      box.classList.add('is-open');
+      box.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () { box.classList.add('is-visible'); });
+      box.querySelector('.lightbox__close').focus();
+    }
+
+    function close() {
+      box.classList.remove('is-visible');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () { box.classList.remove('is-open'); }, reduceMotion ? 0 : 320);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function step(dir) {
+      index = (index + dir + shots.length) % shots.length;
+      // fade the swap so it doesn't snap
+      img.style.opacity = '0';
+      setTimeout(function () { render(); img.style.opacity = ''; }, reduceMotion ? 0 : 160);
+    }
+
+    box.querySelector('.lightbox__close').addEventListener('click', close);
+    box.querySelector('.lightbox__nav--prev').addEventListener('click', function () { step(-1); });
+    box.querySelector('.lightbox__nav--next').addEventListener('click', function () { step(1); });
+    box.addEventListener('click', function (e) {
+      if (e.target === box) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+  })();
+
+  /* ---------- Subtle hero parallax ---------- */
+  (function () {
+    if (reduceMotion) return;
+    var portrait = document.querySelector('.hero__portrait');
+    if (!portrait) return;
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (y < window.innerHeight * 1.2) {
+          portrait.style.transform = 'translateY(' + (y * 0.08) + 'px)';
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+  })();
+
+  /* ---------- Stagger the reveal of sibling cards ---------- */
+  (function () {
+    var groups = document.querySelectorAll('.pkg-grid, .season-grid, .brand-list, .gallery__grid');
+    Array.prototype.forEach.call(groups, function (group) {
+      var items = group.querySelectorAll('.reveal');
+      Array.prototype.forEach.call(items, function (item, i) {
+        item.style.transitionDelay = (i * 90) + 'ms';
+      });
+    });
+  })();
+
+})();

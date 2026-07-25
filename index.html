@@ -297,8 +297,73 @@
     <section class="section garden" id="garden">
       <div class="container">
         <div class="garden__layout">
-          <div class="garden__media reveal">
-            <img src="assets/img/gardening.webp" alt="Hands tending a lush raised garden bed at golden hour" loading="lazy" />
+          <div class="garden__media garden__media--art reveal">
+            <svg class="garden__art" viewBox="0 0 800 600" role="img" aria-label="Botanical line illustration of growing stems and leaves">
+              <defs>
+                <linearGradient id="gardenSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#15130f"/>
+                  <stop offset="55%" stop-color="#0f0e0c"/>
+                  <stop offset="100%" stop-color="#0a0a0b"/>
+                </linearGradient>
+                <radialGradient id="gardenSun" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0%" stop-color="rgba(228,200,135,0.55)"/>
+                  <stop offset="60%" stop-color="rgba(201,169,106,0.14)"/>
+                  <stop offset="100%" stop-color="rgba(201,169,106,0)"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="800" height="600" fill="url(#gardenSky)"/>
+              <circle cx="565" cy="185" r="200" fill="url(#gardenSun)"/>
+              <circle cx="565" cy="185" r="46" fill="none" stroke="rgba(228,200,135,0.5)" stroke-width="1"/>
+
+              <!-- horizon -->
+              <path d="M0 470 H800" stroke="rgba(201,169,106,0.22)" stroke-width="1"/>
+
+              <!-- stems -->
+              <g fill="none" stroke="#c9a96a" stroke-linecap="round" stroke-linejoin="round" class="garden__art-grow">
+                <path d="M170 470 C168 400 176 340 150 286" stroke-width="1.6"/>
+                <path d="M150 340 C110 330 92 300 88 268" stroke-width="1.2"/>
+                <path d="M158 384 C196 372 214 344 218 314" stroke-width="1.2"/>
+
+                <path d="M330 470 C332 392 322 322 348 258" stroke-width="1.8"/>
+                <path d="M340 350 C298 332 282 296 280 262" stroke-width="1.2"/>
+                <path d="M336 398 C376 386 396 356 400 322" stroke-width="1.2"/>
+
+                <path d="M498 470 C500 412 492 366 512 322" stroke-width="1.4"/>
+                <path d="M504 396 C470 384 456 358 454 330" stroke-width="1.1"/>
+
+                <path d="M650 470 C648 420 656 382 636 346" stroke-width="1.3"/>
+                <path d="M642 404 C676 394 692 368 694 342" stroke-width="1.1"/>
+              </g>
+
+              <!-- leaves -->
+              <g fill="rgba(201,169,106,0.16)" stroke="#c9a96a" stroke-width="1.1" class="garden__art-grow">
+                <ellipse cx="88"  cy="264" rx="26" ry="12" transform="rotate(-32 88 264)"/>
+                <ellipse cx="222" cy="310" rx="26" ry="12" transform="rotate(28 222 310)"/>
+                <ellipse cx="278" cy="258" rx="30" ry="13" transform="rotate(-34 278 258)"/>
+                <ellipse cx="404" cy="318" rx="30" ry="13" transform="rotate(30 404 318)"/>
+                <ellipse cx="452" cy="326" rx="24" ry="11" transform="rotate(-30 452 326)"/>
+                <ellipse cx="696" cy="338" rx="24" ry="11" transform="rotate(26 696 338)"/>
+              </g>
+
+              <!-- blooms -->
+              <g class="garden__art-bloom">
+                <circle cx="150" cy="284" r="9"  fill="none" stroke="#e4c887" stroke-width="1.3"/>
+                <circle cx="150" cy="284" r="3"  fill="#e4c887" opacity="0.75"/>
+                <circle cx="348" cy="256" r="11" fill="none" stroke="#e4c887" stroke-width="1.3"/>
+                <circle cx="348" cy="256" r="3.5" fill="#e4c887" opacity="0.8"/>
+                <circle cx="513" cy="320" r="8"  fill="none" stroke="#e4c887" stroke-width="1.2"/>
+                <circle cx="513" cy="320" r="2.5" fill="#e4c887" opacity="0.7"/>
+                <circle cx="635" cy="344" r="7"  fill="none" stroke="#e4c887" stroke-width="1.2"/>
+              </g>
+
+              <!-- soil rows -->
+              <g stroke="rgba(201,169,106,0.16)" stroke-width="1" fill="none">
+                <path d="M40 508 H760"/>
+                <path d="M70 540 H730"/>
+                <path d="M110 570 H690"/>
+              </g>
+            </svg>
             <span class="garden__chip">Spring, Texas · Zone 9a</span>
           </div>
           <div class="reveal">

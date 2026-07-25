@@ -194,10 +194,26 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   font-family: var(--font-body); font-size: var(--text-sm); font-weight: 400;
   letter-spacing: 0.12em; text-transform: uppercase;
-  padding: var(--space-4) var(--space-7); border-radius: var(--radius-full);
+  line-height: 1; min-height: 3.25rem;
+  padding: var(--space-4) var(--space-8); border-radius: var(--radius-full);
   border: 1px solid transparent;
-  transition: background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), transform var(--transition-interactive);
+  position: relative; overflow: hidden; isolation: isolate;
+  text-indent: 0.12em; /* optically re-centre against trailing letter-spacing */
+  transition: background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive), transform var(--transition-interactive), box-shadow var(--transition-interactive);
   white-space: nowrap; flex-shrink: 0;
+}
+.btn > * { position: relative; z-index: 1; }
+/* cinematic shine sweep */
+.btn::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-18deg); opacity: 0; pointer-events: none; z-index: 0;
+}
+.btn:hover::after { animation: btn-sheen 900ms cubic-bezier(0.16,1,0.3,1) forwards; }
+@keyframes btn-sheen {
+  0%   { left: -60%; opacity: 0; }
+  18%  { opacity: 1; }
+  100% { left: 130%; opacity: 0; }
 }
 .btn:active { transform: translateY(1px); }
 
@@ -579,3 +595,211 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .season-grid .season:nth-child(2) { transition-delay: 80ms; }
 .season-grid .season:nth-child(3) { transition-delay: 160ms; }
 .season-grid .season:nth-child(4) { transition-delay: 240ms; }
+
+/* =========================================================
+   CINEMATIC LAYER — motion, depth, and editorial polish
+   Colours & type all inherit from the tokens above.
+   ========================================================= */
+
+/* ---- Garden art panel ---- */
+.garden__media--art { aspect-ratio: 4 / 3; background: var(--color-bg); }
+.garden__art { width: 100%; height: 100%; display: block; }
+.garden__art-grow path,
+.garden__art-grow ellipse {
+  opacity: 0;
+  animation: garden-grow 1400ms cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.garden__art-grow path { stroke-dasharray: 320; stroke-dashoffset: 320; }
+.garden__art-grow path:nth-child(1) { animation-delay: 60ms; }
+.garden__art-grow path:nth-child(2) { animation-delay: 180ms; }
+.garden__art-grow path:nth-child(3) { animation-delay: 260ms; }
+.garden__art-grow path:nth-child(4) { animation-delay: 140ms; }
+.garden__art-grow path:nth-child(5) { animation-delay: 300ms; }
+.garden__art-grow path:nth-child(6) { animation-delay: 360ms; }
+.garden__art-grow path:nth-child(7) { animation-delay: 220ms; }
+.garden__art-grow path:nth-child(8) { animation-delay: 400ms; }
+.garden__art-grow path:nth-child(9) { animation-delay: 320ms; }
+.garden__art-grow path:nth-child(10){ animation-delay: 460ms; }
+.garden__art-grow ellipse { animation: garden-leaf 900ms cubic-bezier(0.16,1,0.3,1) forwards; animation-delay: 620ms; }
+@keyframes garden-grow { to { opacity: 1; stroke-dashoffset: 0; } }
+@keyframes garden-leaf { from { opacity: 0; } to { opacity: 1; } }
+.garden__art-bloom circle { opacity: 0; animation: garden-leaf 900ms ease forwards; animation-delay: 820ms; }
+/* slow breathing glow on the sun disc */
+.garden__media--art::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 55% at 70% 30%, rgba(228,200,135,0.10), transparent 70%);
+  animation: garden-breathe 9s ease-in-out infinite;
+}
+@keyframes garden-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
+
+/* ---- Cinematic scroll reveal (upgrades the base .reveal) ---- */
+.reveal { transition: opacity 900ms cubic-bezier(0.16,1,0.3,1), transform 900ms cubic-bezier(0.16,1,0.3,1), filter 900ms ease; }
+.reveal:not(.is-visible) { filter: blur(6px); }
+.reveal.is-visible { filter: blur(0); }
+
+/* ---- Header: blur + shrink once scrolled ---- */
+.header { transition: background 400ms ease, backdrop-filter 400ms ease, border-color 400ms ease, padding 400ms ease; }
+.header.is-scrolled {
+  background: rgba(10,10,11,0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--color-gold-line);
+  box-shadow: 0 12px 40px -20px rgba(0,0,0,0.9);
+}
+[data-theme='light'] .header.is-scrolled { background: rgba(246,242,234,0.78); }
+
+/* thin gold scroll-progress bar */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright));
+  z-index: 999; pointer-events: none;
+  box-shadow: 0 0 14px var(--color-gold-glow);
+}
+
+/* ---- Hero: staged entrance + slow drift ---- */
+.hero__text > *,
+.hero__portrait { opacity: 0; animation: hero-rise 1200ms cubic-bezier(0.16,1,0.3,1) forwards; }
+.hero__text .eyebrow    { animation-delay: 120ms; }
+.hero__text .hero__title{ animation-delay: 260ms; }
+.hero__text .hero__meta { animation-delay: 420ms; }
+.hero__portrait         { animation-delay: 340ms; }
+@keyframes hero-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+
+/* very slow ken-burns on the hero portrait */
+.hero__portrait img { animation: kenburns 22s ease-in-out infinite alternate; will-change: transform; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
+
+/* drifting gold wash behind the hero */
+.hero__bg::after {
+  content: ''; position: absolute; inset: -20%;
+  background: radial-gradient(45% 40% at 30% 25%, var(--color-gold-glow), transparent 70%);
+  animation: hero-drift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes hero-drift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(4%, 3%, 0) scale(1.12); }
+}
+
+/* animated 'Scroll' cue */
+.hero__scroll { position: relative; }
+.hero__scroll::after {
+  content: ''; position: absolute; left: 50%; bottom: -34px; width: 1px; height: 28px;
+  background: linear-gradient(180deg, var(--color-gold), transparent);
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}
+@keyframes scroll-cue { 0%,100% { opacity: 0.2; transform: scaleY(0.5); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* ---- Section headings: gold rule that draws in ---- */
+.eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); }
+.eyebrow::after {
+  content: ''; height: 1px; width: 0; background: var(--color-gold-line);
+  transition: width 900ms cubic-bezier(0.16,1,0.3,1) 200ms;
+}
+.reveal.is-visible .eyebrow::after,
+.is-visible .eyebrow::after { width: 56px; }
+
+/* ---- Gallery: cinematic hover + click affordance ---- */
+.shot { transition: border-color 400ms ease, box-shadow 500ms ease, transform 500ms cubic-bezier(0.16,1,0.3,1); }
+.shot:hover {
+  border-color: var(--color-gold-line);
+  box-shadow: 0 28px 70px -30px rgba(0,0,0,0.9), 0 0 0 1px var(--color-gold-soft);
+  transform: translateY(-4px);
+}
+.shot__overlay { transition: opacity 420ms ease; }
+.shot__cat, .shot__title, .shot__book {
+  transform: translateY(12px); opacity: 0;
+  transition: transform 520ms cubic-bezier(0.16,1,0.3,1), opacity 420ms ease;
+}
+.shot:hover .shot__cat,    .shot:focus-within .shot__cat    { transform: none; opacity: 1; transition-delay: 60ms; }
+.shot:hover .shot__title,  .shot:focus-within .shot__title  { transform: none; opacity: 1; transition-delay: 120ms; }
+.shot:hover .shot__book,   .shot:focus-within .shot__book   { transform: none; opacity: 1; transition-delay: 180ms; }
+
+/* 'expand' glyph so people know a photo opens full-size */
+.shot__expand {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: var(--radius-full); border: 1px solid var(--color-gold-line);
+  background: rgba(10,10,11,0.6); backdrop-filter: blur(8px); color: var(--color-gold);
+  opacity: 0; transform: scale(0.85); pointer-events: none;
+  transition: opacity 380ms ease, transform 380ms cubic-bezier(0.16,1,0.3,1);
+  z-index: 2;
+}
+.shot:hover .shot__expand, .shot:focus-within .shot__expand { opacity: 1; transform: scale(1); }
+
+/* ---- Lightbox ---- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  align-items: center; justify-content: center; padding: var(--space-8);
+  background: rgba(6,6,7,0.94); backdrop-filter: blur(10px);
+  opacity: 0; transition: opacity 320ms ease;
+}
+.lightbox.is-open { display: flex; }
+.lightbox.is-visible { opacity: 1; }
+.lightbox__figure { max-width: min(1100px, 92vw); max-height: 86vh; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.lightbox__img {
+  max-width: 100%; max-height: 76vh; width: auto; height: auto; display: block;
+  border-radius: var(--radius-md); box-shadow: 0 40px 120px -30px rgba(0,0,0,0.95);
+  transform: scale(0.94); opacity: 0;
+  transition: transform 520ms cubic-bezier(0.16,1,0.3,1), opacity 420ms ease;
+}
+.lightbox.is-visible .lightbox__img { transform: scale(1); opacity: 1; }
+.lightbox__caption {
+  font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text);
+  text-align: center;
+}
+.lightbox__caption span {
+  display: block; font-family: var(--font-body); font-size: var(--text-xs);
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-1);
+}
+.lightbox__close, .lightbox__nav {
+  position: absolute; display: grid; place-items: center;
+  width: 48px; height: 48px; border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong); background: rgba(10,10,11,0.7);
+  color: var(--color-text); transition: all var(--transition-interactive);
+}
+.lightbox__close:hover, .lightbox__nav:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.lightbox__close { top: var(--space-6); right: var(--space-6); }
+.lightbox__nav--prev { left: var(--space-6); top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: var(--space-6); top: 50%; transform: translateY(-50%); }
+@media (max-width: 640px) {
+  .lightbox__nav--prev { left: var(--space-3); }
+  .lightbox__nav--next { right: var(--space-3); }
+}
+
+/* ---- Pricing cards: lift the featured tier ---- */
+.pkg { transition: transform 500ms cubic-bezier(0.16,1,0.3,1), border-color 400ms ease, box-shadow 500ms ease; }
+.pkg:hover { transform: translateY(-6px); border-color: var(--color-gold-line); box-shadow: 0 30px 70px -34px rgba(0,0,0,0.9); }
+.pkg--featured { position: relative; }
+.pkg--featured::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(150deg, var(--color-gold-line), transparent 45%, var(--color-gold-line));
+  opacity: 0.5; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; -webkit-mask-composite: xor; padding: 1px;
+}
+.pkg__price { transition: color 400ms ease; }
+.pkg:hover .pkg__price { color: var(--color-gold-bright); }
+
+/* ---- Marquee: pause on hover so it feels considered ---- */
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+/* ---- Booking modal: smoother cinematic entrance ---- */
+.booking { transition: transform 520ms cubic-bezier(0.16,1,0.3,1), opacity 360ms ease; }
+.booking-overlay:not(.is-open) .booking { transform: translateY(18px) scale(0.97); opacity: 0; }
+
+/* ---- Nav links: gold underline draw ---- */
+.nav__link { position: relative; }
+.nav__link::after {
+  content: ''; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0;
+  background: var(--color-gold); transition: width 380ms cubic-bezier(0.16,1,0.3,1);
+}
+.nav__link:hover::after { width: 100%; }
+
+/* ---- Respect reduced-motion preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal:not(.is-visible) { filter: none; opacity: 1; transform: none; }
+  .hero__text > *, .hero__portrait { opacity: 1; }
+}
+
+/* hero eyebrow sits outside a .reveal wrapper — draw its rule on load */
+.hero .eyebrow::after { width: 56px; transition-delay: 500ms; }
