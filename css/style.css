@@ -1,4 +1,4 @@
-/* Lashesta Turner
+/* LaShesta Turner
    Fonts: Pinyon Script, Cormorant Garamond, Jost */
 
 :root {
@@ -31,6 +31,7 @@
   --font-script: 'Pinyon Script', 'Brush Script MT', cursive;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+  --font-logo: 'Century Gothic', 'Questrial', 'URW Gothic', 'Futura', 'Avant Garde', 'Jost', sans-serif;
 
   /* Radius */
   --radius-sm: 0.25rem;
@@ -243,7 +244,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 
 .brand { display: flex; align-items: center; gap: var(--space-3); }
 .brand__mark { width: 30px; height: 38px; flex-shrink: 0; color: var(--color-gold); }
-.brand__name { font-family: var(--font-script); font-size: var(--text-xl); line-height: 1; color: var(--color-text); }
+.brand__name { font-family: var(--font-logo); font-size: var(--text-lg); font-weight: 400; letter-spacing: 0.02em; line-height: 1; color: var(--color-text); }
 .brand__name .dot { color: var(--color-gold); }
 
 .nav__links { display: flex; align-items: center; gap: var(--space-2); }
@@ -879,4 +880,59 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .form-error {
   margin-top: var(--space-3); text-align: center;
   font-size: var(--text-xs); color: #e58b7b;
+}
+
+/* ---- Garden section: charcoal, gold, lime green ---- */
+#garden {
+  --garden-lime: #6faa2a;
+  --garden-lime-bright: #8fce3d;
+  --garden-line: rgba(111,170,42,0.28);
+  --garden-glow: rgba(111,170,42,0.14);
+  background: linear-gradient(180deg, var(--color-bg) 0%, #0d100b 50%, var(--color-bg) 100%);
+}
+#garden .eyebrow { color: var(--garden-lime-bright); }
+#garden .eyebrow::after { background: var(--garden-line); }
+#garden .section-title .script { color: var(--garden-lime-bright); }
+#garden .season { border-color: rgba(111,170,42,0.18); }
+#garden .season:hover { border-color: var(--garden-line); }
+#garden .season__name { color: var(--garden-lime-bright); }
+#garden .garden__chip {
+  border-color: var(--garden-line);
+  color: var(--garden-lime-bright);
+  background: rgba(10,12,8,0.72);
+}
+
+.garden__media--logo {
+  aspect-ratio: 4 / 3;
+  display: grid; place-items: center;
+  background: radial-gradient(70% 60% at 50% 45%, rgba(111,170,42,0.10), transparent 72%), #0b0d09;
+  border: 1px solid rgba(111,170,42,0.16);
+  padding: var(--space-8);
+}
+.garden__media--logo img {
+  width: 100%; max-width: 460px; height: auto; object-fit: contain;
+  filter: drop-shadow(0 18px 44px rgba(111,170,42,0.18));
+}
+
+/* follow block */
+.garden__follow { margin-top: var(--space-8); }
+.garden__follow-label {
+  font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-text-muted); margin-bottom: var(--space-4);
+}
+.garden__social { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.garden__social-link {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-3) var(--space-5); border-radius: var(--radius-full);
+  border: 1px solid var(--garden-line); color: var(--garden-lime-bright);
+  font-size: var(--text-sm); letter-spacing: 0.04em;
+  transition: all var(--transition-interactive);
+}
+.garden__social-link svg { width: 17px; height: 17px; flex-shrink: 0; }
+.garden__social-link:hover {
+  background: var(--garden-glow);
+  border-color: var(--garden-lime-bright);
+  color: #a8e055;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px rgba(111,170,42,0.45);
 }

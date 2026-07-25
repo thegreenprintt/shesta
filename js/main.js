@@ -1,5 +1,5 @@
 /* =========================================================
-   Lashesta Turner site scripts
+   LaShesta Turner site scripts
    ========================================================= */
 (function () {
   'use strict';
