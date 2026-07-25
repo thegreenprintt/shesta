@@ -874,3 +874,16 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
   animation: faq-open 420ms cubic-bezier(0.16,1,0.3,1);
 }
 @keyframes faq-open { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* ---- Pricing: "not included" rows so the upgrade is obvious ---- */
+.pkg__features li.is-off { color: var(--color-text-faint); opacity: 0.55; }
+.pkg__features li.is-off::before { content: '—'; color: var(--color-text-faint); }
+.pkg__features li strong { color: var(--color-text); font-weight: 500; }
+.pkg__features li em { font-style: italic; color: var(--color-gold); }
+.pkg--featured .pkg__features li:not(.is-off)::before { color: var(--color-gold-bright); }
+
+/* form error state */
+.form-error {
+  margin-top: var(--space-3); text-align: center;
+  font-size: var(--text-xs); color: #e58b7b;
+}

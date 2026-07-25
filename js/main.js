@@ -215,7 +215,17 @@
       dateInput.min = new Date().toISOString().split('T')[0];
     }
 
-    // Submit -> success summary
+    /* =====================================================
+       EMAIL DELIVERY
+       Paste the Formspree endpoint below and submissions
+       start emailing Lashesta immediately. Until then the
+       form still shows the confirmation, but sends nothing.
+       Get one free at https://formspree.io -> New Form.
+       ===================================================== */
+    var FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxxx'
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var data = new FormData(form);
@@ -226,9 +236,45 @@
       var pretty = date
         ? new Date(date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
         : 'a scheduled date';
-      successSummary.textContent = 'Thanks, ' + (name || 'friend') + '. I\'ve noted your discovery call request for ' + service + ' on ' + pretty + (time ? ' (' + time + ')' : '') + '. I\'ll email you shortly to confirm.';
-      form.hidden = true;
-      success.hidden = false;
+
+      function showSuccess() {
+        successSummary.textContent = 'Thanks, ' + (name || 'friend') + '. Your discovery call request for ' + service + ' on ' + pretty + (time ? ' (' + time + ')' : '') + ' is in. You\'ll get an email to confirm shortly.';
+        form.hidden = true;
+        success.hidden = false;
+      }
+
+      // Give the email a useful subject line in Lashesta's inbox
+      data.append('_subject', 'New discovery call request — ' + service + ' — ' + (name || 'no name'));
+
+      if (!FORM_ENDPOINT) {
+        // No endpoint configured yet — behave as before.
+        showSuccess();
+        return;
+      }
+
+      var originalLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Request failed');
+          showSuccess();
+        })
+        .catch(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+          var warn = form.querySelector('[data-form-error]');
+          if (!warn) {
+            warn = document.createElement('p');
+            warn.setAttribute('data-form-error', '');
+            warn.className = 'form-error';
+            form.appendChild(warn);
+          }
+          warn.textContent = "That didn't send. Please try again, or email directly.";
+        });
     });
   })();
 
