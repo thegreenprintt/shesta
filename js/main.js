@@ -222,7 +222,7 @@
        form still shows the confirmation, but sends nothing.
        Get one free at https://formspree.io -> New Form.
        ===================================================== */
-    var FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxxx'
+    var FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xvzevwvw'
 
     var submitBtn = form.querySelector('button[type="submit"]');
 
