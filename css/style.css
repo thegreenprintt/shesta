@@ -245,7 +245,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 
 .brand { display: flex; align-items: center; gap: var(--space-3); }
 .brand__mark { width: 38px; height: auto; flex-shrink: 0; display: block; }
-.brand__name { font-family: var(--font-script); font-size: var(--text-xl); font-weight: 400; letter-spacing: 0; line-height: 1; color: var(--color-text); }
+.brand__name { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: 0.03em; line-height: 1.05; color: var(--color-text); white-space: nowrap; }
 .brand__name .dot { color: var(--color-gold); }
 
 .nav__links { display: flex; align-items: center; gap: var(--space-2); }
@@ -571,7 +571,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .footer { border-top: 1px solid var(--color-divider); background: var(--color-surface); padding-block: var(--space-20) var(--space-8); }
 .footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-8); margin-bottom: var(--space-14); }
 @media (max-width: 700px) { .footer__top { grid-template-columns: 1fr; } }
-.footer__brand { font-family: var(--font-script); font-size: var(--text-3xl); font-weight: 400; letter-spacing: 0; line-height: 1; }
+.footer__brand { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 500; letter-spacing: 0.03em; line-height: 1.05; }
 .footer__brand .dot { color: var(--color-gold); }
 .footer__tag { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--space-5); max-width: 36ch; font-weight: 300; }
 .footer__col h4 { font-family: var(--font-body); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-faint); margin-bottom: var(--space-4); font-weight: 400; }
@@ -1044,3 +1044,36 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 .shot__expand {
   border-radius: var(--radius-md);
 }
+
+/* =========================================================
+   Centred section headers over their card grids
+   ========================================================= */
+
+/* Branding: heading + lede centred above the three service rows */
+.branding__content .section-head { max-width: none !important; text-align: center; }
+.branding__content .section-head .eyebrow { justify-content: center; }
+.branding__content .section-head .section-lede { margin-left: auto; margin-right: auto; max-width: 60ch; }
+.brand-service { text-align: left; }
+
+/* Garden: heading, lede and follow block centred above the four season cards */
+.garden__text { text-align: center; }
+.garden__text .eyebrow { justify-content: center; }
+.garden__text .section-lede { margin-left: auto; margin-right: auto; max-width: 52ch; }
+.garden__brand { margin-left: auto; margin-right: auto; }
+.garden__follow { text-align: center; }
+.garden__social { justify-content: center; }
+.season { text-align: center; }
+
+/* Process: stack the heading above the lede, both centred over the four steps */
+.process .section-head--row {
+  display: block; text-align: center;
+}
+.process .section-head--row .eyebrow { justify-content: center; }
+.process .section-head--row .section-lede {
+  margin: var(--space-4) auto 0; max-width: 56ch;
+}
+.process__step { text-align: center; }
+.process__step .process__num { display: block; }
+
+/* keep the connecting hairline visually centred on the taller cards */
+.process__step::after { top: 50%; }
