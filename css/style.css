@@ -23,6 +23,7 @@
   --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
+  --space-14: 3.5rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
@@ -381,7 +382,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
    DAY TRADING - 1House.TV packages
    ========================================================= */
 .trading { background: var(--color-surface); border-block: 1px solid var(--color-divider); }
-.trading__layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--space-14); align-items: center; }
+.trading__layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--space-12); align-items: center; }
 @media (max-width: 880px) { .trading__layout { grid-template-columns: 1fr; gap: var(--space-10); } }
 
 .trading__visual { position: relative; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border); aspect-ratio: 4 / 3; }
@@ -1077,3 +1078,84 @@ a { color: inherit; text-decoration: none; transition: color var(--transition-in
 
 /* keep the connecting hairline visually centred on the taller cards */
 .process__step::after { top: 50%; }
+
+/* =========================================================
+   Wordmark: legible serif + calligraphy flourish, sized down
+   ========================================================= */
+.brand__name {
+  font-size: var(--text-base);
+  letter-spacing: 0.02em;
+  display: inline-flex; align-items: baseline; gap: 0.28em;
+}
+.brand__name .script {
+  font-family: var(--font-script);
+  font-size: 1.5em;
+  line-height: 0.9;
+  color: var(--color-gold);
+}
+.brand__mark { width: 30px; }
+.footer__brand .script {
+  font-family: var(--font-script);
+  font-size: 1.35em;
+  line-height: 0.9;
+  color: var(--color-gold);
+}
+
+/* =========================================================
+   Centred headers over their grids: photography + trading
+   ========================================================= */
+#photography .section-head--row,
+.trading__text {
+  display: block; text-align: center;
+}
+#photography .section-head--row .eyebrow,
+.trading__text .eyebrow { justify-content: center; }
+#photography .section-head--row .section-lede,
+.trading__text .section-lede {
+  margin: var(--space-4) auto 0; max-width: 56ch;
+}
+.filters { justify-content: center; }
+#trading .trading__note { text-align: center; }
+
+/* =========================================================
+   Mobile: centre the hero and every section header
+   ========================================================= */
+@media (max-width: 900px) {
+  .hero__text { text-align: center; }
+  .hero__text .eyebrow { justify-content: center; }
+  .hero__title { text-align: center; }
+  .hero__meta p { margin-left: auto; margin-right: auto; max-width: 46ch; }
+  .hero__actions { align-items: center; }
+
+  .section-head,
+  .section-head--row { text-align: center; }
+  .section-head .eyebrow,
+  .section-head--row .eyebrow { justify-content: center; }
+  .section-head .section-lede,
+  .section-head--row .section-lede { margin-left: auto; margin-right: auto; }
+
+  .process .section-head--row,
+  #photography .section-head--row,
+  .trading__text { display: block; }
+
+  .pkg, .process__step, .brand-service, .season { text-align: center; }
+  .brand-service { flex-direction: column; align-items: center; gap: var(--space-2); }
+  .pkg__features { align-items: center; }
+  .pkg__features li { justify-content: center; text-align: left; }
+}
+
+/* Trading: header full-width and centred above the chart and the three plans */
+.trading__text { max-width: 62ch; margin-left: auto; margin-right: auto; }
+.trading__terms { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--space-4); }
+.trading__visual-wrap { max-width: 760px; margin: var(--space-10) auto 0; }
+
+/* keep the gold dot tight against the name */
+.brand__name { gap: 0; }
+.brand__name .script { margin-left: 0.22em; }
+.brand__name .dot, .footer__brand .dot { margin-left: 0.04em; }
+
+/* hero buttons: centred and equal width on phones */
+@media (max-width: 900px) {
+  .hero__actions { width: 100%; align-items: center; }
+  .hero__actions .btn { width: 100%; max-width: 320px; }
+}
